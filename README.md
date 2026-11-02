@@ -30,10 +30,10 @@
 目前提供 Windows 便携版，不需要安装，也不需要提前装 Python、Node 或其他开发环境：
 
 1. 打开 [Releases 页面](https://github.com/kaneliers/citation-converter/releases/latest)。
-2. 下载 `citation-converter-1.0.0-portable.exe`。
+2. 下载文件名以 `citation-converter` 开头、以 `portable.exe` 结尾的文件（当前版本为 1.0.0）。
 3. 双击运行即可。可以把它放在任意文件夹，也可以发送快捷方式到桌面。
 
-Windows 第一次运行未签名的程序时，可能弹出“已保护你的电脑”。点击“更多信息”，再点“仍要运行”即可。
+第一次运行时，Windows 可能弹出“已保护你的电脑”。点击“更多信息”，再点“仍要运行”即可。
 
 ## 第一次使用：填一个 AI 接口
 
