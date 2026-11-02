@@ -1,0 +1,53 @@
+{
+  "name": "citation-converter",
+  "version": "1.0.0",
+  "description": "引注格式转换器：《历史研究》/ APA / MLA / GB-T 7714",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "node test/run-tests.js",
+    "dist": "electron-builder --win portable"
+  },
+  "author": "kaneliers (https://github.com/kaneliers)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaneliers/citation-converter.git"
+  },
+  "homepage": "https://github.com/kaneliers/citation-converter#readme",
+  "bugs": {
+    "url": "https://github.com/kaneliers/citation-converter/issues"
+  },
+  "keywords": [
+    "citation",
+    "citation-style",
+    "gb-t-7714",
+    "apa",
+    "mla",
+    "history-research",
+    "academic-writing",
+    "electron"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "electron": "^35.0.0",
+    "electron-builder": "^26.0.0"
+  },
+  "build": {
+    "appId": "cn.local.citation-converter",
+    "productName": "引注格式转换器",
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer/**/*"
+    ],
+    "win": {
+      "target": "portable"
+    },
+    "portable": {
+      "artifactName": "引注格式转换器-${version}-绿色版.exe"
+    }
+  }
+}

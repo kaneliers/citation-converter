@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'" />
+  <title>引注格式转换器</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="title">引注格式转换器</div>
+    <div class="format-tabs" id="formatTabs">
+      <button class="tab active" data-format="lsyj">《历史研究》</button>
+      <button class="tab" data-format="gbt">GB/T 7714</button>
+      <button class="tab" data-format="apa">APA 7th</button>
+      <button class="tab" data-format="mla">MLA 9th</button>
+    </div>
+    <div class="header-actions">
+      <button id="convertBtn" class="btn primary">转换</button>
+      <button id="settingsBtn" class="btn" title="设置">⚙ 设置</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="pane input-pane">
+      <div class="pane-head">
+        <span>输入</span>
+        <span class="hint">支持 APA / MLA / GB/T /《历史研究》/ 自由文本，单条或多条混贴均可（Ctrl+Enter 转换）</span>
+      </div>
+      <textarea id="inputArea" placeholder="在此粘贴引注信息，例如：&#10;赵景深. 文坛忆旧[M]. 上海: 北新书局, 1948: 43.&#10;Brooks, P. (2000). Troubling confessions: Speaking guilt in law and literature. University of Chicago Press.&#10;鲁迅的《呐喊》由人民文学出版社2005年出版，第12页&#10;&#10;一条或多条均可，自动识别拆分"></textarea>
+    </section>
+
+    <section class="pane output-pane">
+      <div class="pane-head">
+        <span>输出</span>
+        <span class="hint">
+          <span class="legend"><i class="miss-sw">【缺：字段】</i> 缺失</span>
+          <span class="legend"><i class="unc-sw">请核对</i> 不确定</span>
+        </span>
+        <button id="copyAllBtn" class="btn small" disabled>复制全部</button>
+      </div>
+      <div id="outputArea" class="output-area">
+        <div class="placeholder">等待转换…</div>
+      </div>
+      <div id="summaryArea" class="summary hidden"></div>
+    </section>
+  </main>
+
+  <footer id="statusBar">就绪</footer>
+
+  <div id="settingsModal" class="modal hidden">
+    <div class="modal-box">
+      <div class="modal-head">
+        <span>设置</span>
+        <button id="settingsClose" class="btn small">×</button>
+      </div>
+      <div class="modal-body">
+        <label>接口预设
+          <select id="presetSel">
+            <option value="">自定义</option>
+            <option value="deepseek">DeepSeek</option>
+            <option value="kimi">Kimi (Moonshot)</option>
+            <option value="qwen">通义千问</option>
+            <option value="openai">OpenAI</option>
+          </select>
+        </label>
+        <label>baseURL
+          <input id="baseURLInput" type="text" placeholder="https://api.deepseek.com/v1" />
+        </label>
+        <label>模型名称
+          <input id="modelInput" type="text" placeholder="deepseek-chat" />
+        </label>
+        <label>API Key
+          <input id="apiKeyInput" type="password" placeholder="sk-..." />
+        </label>
+        <label>温度
+          <input id="tempInput" type="number" step="0.1" min="0" max="2" value="0" />
+        </label>
+        <label class="check"><input id="jsonModeInput" type="checkbox" checked /> 请求 JSON 输出模式（部分接口不支持时请关闭）</label>
+        <div class="modal-actions">
+          <button id="testBtn" class="btn">测试连接</button>
+          <button id="saveBtn" class="btn primary">保存</button>
+        </div>
+        <div id="settingsMsg" class="settings-msg"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="rules.js"></script>
+  <script src="llm.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
